@@ -1,0 +1,147 @@
+@mixin box-shadow($x, $y, $blur, $spread-radius, $color, $inset:null){
+  -webkit-box-shadow: $x $y $blur $spread-radius $color $inset;
+  -moz-box-shadow: $x $y $blur $spread-radius $color $inset;
+  -ms-box-shadow: $x $y $blur $spread-radius $color $inset;
+  -o-box-shadow: $x $y $blur $spread-radius $color $inset;
+  box-shadow: $x $y $blur $spread-radius $color $inset;
+}
+
+body{
+  background-color:#262940;
+  font-family:"Helvetica", "Calibri", "sans-serif";
+  color:white;
+  margin:0;
+}
+
+#full-page{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:auto;
+  height:100vh;
+  max-width:70%;
+  min-width:350px;
+  background-color:#1E1F26;
+  border-left:10px solid black;
+  border-right:10px solid black;
+  
+  button{
+    background-color:transparent;
+    border:none;
+    @include box-shadow(0px, 0px, 1px, 0px, white);
+    border-radius:2px;
+    i{
+      color:red;
+    }
+
+
+  }
+
+  button:hover{
+    cursor:pointer;
+    @include box-shadow(0px, 0px, 1px, 0px, white, inset);
+    i{
+      color:white;
+    }
+  }
+
+  span{
+    font-family:"Iceland";
+    font-size:2em;
+    margin:0.5em;
+    text-align:center;
+  }
+}
+
+
+#clock-container{
+  display:grid;
+  grid-template-areas: "timer timer"
+                        "session-counter session-counter"
+                        "break-counter break-counter";
+  grid-column-gap:1em;
+  width:70%;
+}
+
+$grid-elements : ("timer" "break-counter" "session-counter");
+
+@each $elem in $grid-elements{
+  ##{$elem}{
+    grid-area:#{$elem};
+  }
+}
+
+$grid-elementos : ("canvas" "timer-label" "time-left" "start_stop" "reset");
+
+@each $elem in $grid-elementos{
+  ##{$elem}{
+    grid-area:#{$elem};
+  }
+}
+
+#time-left, #timer-label{
+  border-radius:10px;
+  text-align:center;
+  background-color:black;
+  padding:0.2em;
+  @include box-shadow(0px, 0px, 1px, 0px, white, inset);
+}
+
+
+#timer{
+  padding:1em;
+  margin-bottom:1em;
+  
+  canvas{
+    margin:auto;
+  }
+  
+  >div{
+    display:grid;
+    grid-template-areas: "canvas canvas"
+      "timer-label time-left"
+      "start_stop reset";
+    background-color:#040021;
+    border-radius:10px;
+    border:2px solid white;
+    padding:1em;
+    @include box-shadow(0px, 0px, 3px, 3px, dimgray, inset);
+    
+    >button{
+      margin:0.5em;
+    }
+    
+  }
+}
+
+#break-counter, #session-counter{
+  display:grid;
+  grid-template-columns:3fr 1fr 1fr;
+  flex-direction:column;
+  background-color:#040021;
+  border-radius:5px;
+  padding:0.3em;
+  @include box-shadow(0px, 0px, 2px, 1px, dimgray, inset);
+  margin:0.5em;
+  
+  >div{
+    border-radius:2px;
+    @include box-shadow(0px, 0px, 1px, 0px, white);
+    background-color:black;
+    padding:0.1em;
+    div{
+      display:inline-block;
+      text-align:center;
+    }
+  }
+  
+  >button{
+    margin-left:0.5em;
+  }
+}
+
+@media (max-width:700px){
+  #clock-container{
+    width:100%;  
+  }
+}

@@ -1,0 +1,164 @@
+body {
+  background-color: #262940;
+  font-family: "Helvetica", "Calibri", "sans-serif";
+  color: white;
+  margin: 0;
+}
+
+#full-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 100vh;
+  max-width: 70%;
+  min-width: 350px;
+  background-color: #1E1F26;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+}
+#full-page button {
+  background-color: transparent;
+  border: none;
+  -webkit-box-shadow: 0px 0px 1px 0px white;
+  -moz-box-shadow: 0px 0px 1px 0px white;
+  -ms-box-shadow: 0px 0px 1px 0px white;
+  -o-box-shadow: 0px 0px 1px 0px white;
+  box-shadow: 0px 0px 1px 0px white;
+  border-radius: 2px;
+}
+#full-page button i {
+  color: red;
+}
+#full-page button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 1px 0px white inset;
+  -moz-box-shadow: 0px 0px 1px 0px white inset;
+  -ms-box-shadow: 0px 0px 1px 0px white inset;
+  -o-box-shadow: 0px 0px 1px 0px white inset;
+  box-shadow: 0px 0px 1px 0px white inset;
+}
+#full-page button:hover i {
+  color: white;
+}
+#full-page span {
+  font-family: "Iceland";
+  font-size: 2em;
+  margin: 0.5em;
+  text-align: center;
+}
+
+#clock-container {
+  display: grid;
+  grid-template-areas: "timer timer" "session-counter session-counter" "break-counter break-counter";
+  grid-column-gap: 1em;
+  width: 70%;
+}
+
+#timer {
+  grid-area: timer;
+}
+
+#break-counter {
+  grid-area: break-counter;
+}
+
+#session-counter {
+  grid-area: session-counter;
+}
+
+#canvas {
+  grid-area: canvas;
+}
+
+#timer-label {
+  grid-area: timer-label;
+}
+
+#time-left {
+  grid-area: time-left;
+}
+
+#start_stop {
+  grid-area: start_stop;
+}
+
+#reset {
+  grid-area: reset;
+}
+
+#time-left, #timer-label {
+  border-radius: 10px;
+  text-align: center;
+  background-color: black;
+  padding: 0.2em;
+  -webkit-box-shadow: 0px 0px 1px 0px white inset;
+  -moz-box-shadow: 0px 0px 1px 0px white inset;
+  -ms-box-shadow: 0px 0px 1px 0px white inset;
+  -o-box-shadow: 0px 0px 1px 0px white inset;
+  box-shadow: 0px 0px 1px 0px white inset;
+}
+
+#timer {
+  padding: 1em;
+  margin-bottom: 1em;
+}
+#timer canvas {
+  margin: auto;
+}
+#timer > div {
+  display: grid;
+  grid-template-areas: "canvas canvas" "timer-label time-left" "start_stop reset";
+  background-color: #040021;
+  border-radius: 10px;
+  border: 2px solid white;
+  padding: 1em;
+  -webkit-box-shadow: 0px 0px 3px 3px dimgray inset;
+  -moz-box-shadow: 0px 0px 3px 3px dimgray inset;
+  -ms-box-shadow: 0px 0px 3px 3px dimgray inset;
+  -o-box-shadow: 0px 0px 3px 3px dimgray inset;
+  box-shadow: 0px 0px 3px 3px dimgray inset;
+}
+#timer > div > button {
+  margin: 0.5em;
+}
+
+#break-counter, #session-counter {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  flex-direction: column;
+  background-color: #040021;
+  border-radius: 5px;
+  padding: 0.3em;
+  -webkit-box-shadow: 0px 0px 2px 1px dimgray inset;
+  -moz-box-shadow: 0px 0px 2px 1px dimgray inset;
+  -ms-box-shadow: 0px 0px 2px 1px dimgray inset;
+  -o-box-shadow: 0px 0px 2px 1px dimgray inset;
+  box-shadow: 0px 0px 2px 1px dimgray inset;
+  margin: 0.5em;
+}
+#break-counter > div, #session-counter > div {
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 0px 1px 0px white;
+  -moz-box-shadow: 0px 0px 1px 0px white;
+  -ms-box-shadow: 0px 0px 1px 0px white;
+  -o-box-shadow: 0px 0px 1px 0px white;
+  box-shadow: 0px 0px 1px 0px white;
+  background-color: black;
+  padding: 0.1em;
+}
+#break-counter > div div, #session-counter > div div {
+  display: inline-block;
+  text-align: center;
+}
+#break-counter > button, #session-counter > button {
+  margin-left: 0.5em;
+}
+
+@media (max-width: 700px) {
+  #clock-container {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
