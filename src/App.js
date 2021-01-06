@@ -2,7 +2,6 @@ import TimerType from "./TimerType";
 import {useState, useEffect, useRef} from 'react';
 
 const Clock = () => {
-  const [interval, setTheInterval] = useState("");
   const [sessionCounter, setSessionCounter] = useState(25);
   const [breakCounter, setBreakCounter] = useState(5);
   const [timerType, setTimerType] = useState("Session");
@@ -36,26 +35,27 @@ const Clock = () => {
   });
       
   useEffect(() => {
+    let currentCanvas = canvasRef.current;
     let ctx = canvasRef.current.getContext("2d");
     let radius = (canvasRef.current.height / 2) * 0.90;
-    draw(ctx, radius);
-    return () => ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    draw(ctx, radius, currentCanvas);
+    return () => ctx.clearRect(0, 0, currentCanvas.width, currentCanvas.height);
   });
 
-  const draw = (ctx, radius) => {
+  const draw = (ctx, radius, currentCanvas) => {
     let ang; 
     var myImage = new Image(200,200);
     myImage.src = "https://freefrontend.com/assets/img/css-background-patterns/css-lattice-pattern.png";
     myImage.onload = () => { // execute folllowing code after the image is loaded
       ctx.save();
       ctx.beginPath();
-      ctx.arc(canvasRef.current.height/2, canvasRef.current.height/2, radius-50, 0, 2*Math.PI); //draw a circle that will cut through the image
+      ctx.arc(currentCanvas.height/2, currentCanvas.height/2, radius-50, 0, 2*Math.PI); //draw a circle that will cut through the image
       ctx.clip();
       ctx.drawImage(myImage, 0, 0); 
       ctx.restore(); // restore context before drawing the image
       ctx.save();
       // The following is the drawing of the sixty bars representing each a minute on the clock
-      ctx.translate(canvasRef.current.height/2, canvasRef.current.height/2);
+      ctx.translate(currentCanvas.height/2, currentCanvas.height/2);
       ctx.font = radius*0.3 + "px Iceland";
       if(timer < 60)
         ctx.fillStyle = "red";
